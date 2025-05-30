@@ -19,6 +19,12 @@ const Projects = () => {
       description: 'Efficient data parsing and processing tool.',
       technologies: ['Python', 'Pandas', 'NumPy'],
     },
+    {
+      title: 'Todo App',
+      description: 'A simple and intuitive to-do list application.',
+      technologies: ['React', 'Vite', 'JavaScript'],
+      demoUrl: 'https://todo-app-mirii.vercel.app/',
+    },
   ];
 
   return (
@@ -114,6 +120,7 @@ const Projects = () => {
                       display: 'flex',
                       flexWrap: 'wrap',
                       gap: 1,
+                      mb: project.demoUrl ? 2 : 0, // Add margin if demo button exists
                     }}
                   >
                     {project.technologies.map((tech, techIndex) => (
@@ -133,6 +140,32 @@ const Projects = () => {
                       </Typography>
                     ))}
                   </Box>
+                  {project.demoUrl && (
+                    <Box sx={{ mt: 'auto' }}>
+                      <motion.a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        style={{
+                          display: 'inline-block',
+                          background: 'linear-gradient(90deg, #00f7ff, #ff00ff)',
+                          color: '#ffffff',
+                          padding: '10px 20px',
+                          borderRadius: '8px',
+                          textDecoration: 'none',
+                          fontWeight: 'bold',
+                          textAlign: 'center',
+                          border: 'none',
+                          cursor: 'pointer',
+                          boxShadow: '0 0 10px rgba(0, 247, 255, 0.5)',
+                        }}
+                      >
+                        Demo
+                      </motion.a>
+                    </Box>
+                  )}
                 </Box>
               </motion.div>
             ))}
@@ -143,4 +176,4 @@ const Projects = () => {
   );
 };
 
-export default Projects; 
+export default Projects;
